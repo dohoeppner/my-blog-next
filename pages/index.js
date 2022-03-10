@@ -1,4 +1,5 @@
 import { PostList } from "../components/PostList/PostList";
+import { getSortedPostsData } from "../lib/posts";
 
 export default function Home() {
   return (
@@ -6,9 +7,18 @@ export default function Home() {
       <h1>My Blog</h1>
       <p>Lorem Ipsum…</p>
       <h2>Posts</h2>
-      <PostList posts={examplePosts} />
+      <PostList posts={posts} />
     </>
   );
+}
+
+export async function getStaticProps() {
+  const posts = getSortedPostsData();
+  return {
+    props: {
+      posts: posts,
+    },
+  };
 }
 
 const examplePosts = [

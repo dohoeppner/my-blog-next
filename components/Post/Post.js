@@ -1,10 +1,15 @@
 import * as React from "react";
 import styled from "styled-components";
+import Link from "next/link";
 
 export function Post({ id, title, date }) {
   return (
     <Container>
-      <Title id={id}>{title}</Title>
+      <Link href={"/Blog/" + id}>
+        <a>
+          <Title id={id}>{title}</Title>
+        </a>
+      </Link>
       <time dateTime={date}>{date}</time>
     </Container>
   );
